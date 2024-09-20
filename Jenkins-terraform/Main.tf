@@ -1,4 +1,4 @@
-resource "aws_iam_role" "example_role" {
+resource "aws_iam_role" "jenks_role" {
   name = "Jenkins-terraform"
   assume_role_policy = <<EOF
 {
@@ -16,14 +16,14 @@ resource "aws_iam_role" "example_role" {
 EOF
 }
 
-resource "aws_iam_role_policy_attachment" "example_attachment" {
+resource "aws_iam_role_policy_attachment" "jenks_attachment" {
   role       = aws_iam_role.example_role.name
   policy_arn = "arn:aws:iam::aws:policy/AdministratorAccess"
 }
 
-resource "aws_iam_instance_profile" "example_profile" {
+resource "aws_iam_instance_profile" "jenks_profile" {
   name = "Jenkins-terraform"
-  role = aws_iam_role.example_role.name
+  role = aws_iam_role.jenks_role
 }
 
 resource "aws_security_group" "Jenkins-sg" {
